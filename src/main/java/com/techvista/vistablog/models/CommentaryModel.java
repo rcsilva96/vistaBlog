@@ -1,30 +1,32 @@
 package com.techvista.vistablog.models;
 
-import com.techvista.vistablog.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
-@Table(name = "user")
+@Table(name = "Commentary")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class UserModel {
+public class CommentaryModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userID;
+    private Long commentaryId;
+    private String content;
 
-    private String userName;
+    private Date date;
 
-    private String email;
+    @ManyToOne
+    private UserModel user;
 
-    private String password;
-
-    private RoleEnum role;
+    @ManyToOne
+    private PostModel post;
 
 }

@@ -1,6 +1,5 @@
 package com.techvista.vistablog.models;
 
-import com.techvista.vistablog.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,23 +7,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user")
+@Table(name = "Tag")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class UserModel {
+public class TagModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userID;
+    private Long tagId;
 
-    private String userName;
-
-    private String email;
-
-    private String password;
-
-    private RoleEnum role;
+    private String name;
 
 }
