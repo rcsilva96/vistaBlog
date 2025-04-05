@@ -5,14 +5,14 @@ import java.util.List;
 
 public interface UserService {
 
-    UserModel save(UserModel user);
+    UserModel saveUser(UserModel user);
 
-    List<UserModel> getAll();
+    List<UserModel> getAllUsers();
 
-    UserModel get(Long userId);
+    UserModel getUser(Long userId);
 
-    UserModel update(Long userId, UserModel user);
+    UserModel updateUser(Long userId, UserModel user);
 
-    void delete(Long userId);
+    void deleteUser(Long userId);
 
 }

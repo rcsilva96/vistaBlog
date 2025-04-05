@@ -5,13 +5,13 @@ import com.techvista.vistablog.models.TagModel;
 import java.util.List;
 
 public interface TagService {
-    TagModel save(TagModel tag);
+    TagModel saveTag(TagModel tag);
 
-    List<TagModel> getAll();
+    List<TagModel> getAllTags();
 
-    TagModel get(Long tagId);
+    TagModel getTag(Long tagId);
 
-    TagModel update(Long tagId, TagModel tag);
+    TagModel updateTag(Long tagId, TagModel tag);
 
-    void delete(Long tagId);
+    void deleteTag(Long tagId);
 }

@@ -12,15 +12,14 @@ import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
 
     @Override
-    public PostModel save(final PostModel post) {
+    public PostModel savePost(final PostModel post) {
 
-        PostModel existingPost = postRepository.findByTitle(post.getPostTitle();
+        PostModel existingPost = postRepository.findByTitle(post.getPostTitle());
         if (Objects.nonNull(existingPost)){
             throw new RuntimeException("O post já existe!");
         }
@@ -32,11 +31,12 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostModel> getAll() {
+    public List<PostModel> getAllPosts() {
         return postRepository.findAll();
     }
 
-    @Override PostModel getPost(Long postId) {
+    @Override
+    public PostModel getPost(Long postId) {
         return postRepository.findById(postId).orElse(null);
     }
 
@@ -49,5 +49,10 @@ public class PostServiceImpl implements PostService {
         existingPost.setPostTitle(post.getPostTitle());
         existingPost.setPostContent(post.getPostContent());
         return postRepository.save(existingPost);
+    }
+
+    @Override
+    public void deletePost(Long postId) {
+        postRepository.deleteById(postId);
     }
 }

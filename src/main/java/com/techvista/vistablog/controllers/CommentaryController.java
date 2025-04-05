@@ -20,27 +20,27 @@ import java.util.List;
 
         @PostMapping("/save")
         private @ResponseBody CommentaryModel saveCommentary(@RequestBody CommentaryModel commentary) {
-            return commentaryService.save(commentary);
+            return commentaryService.saveCommentary(commentary);
         }
 
         @GetMapping("/getAll")
         private @ResponseBody List<CommentaryModel> getAlCommentaries() {
-            return commentaryService.getAll();
+            return commentaryService.getAllCommentaries();
         }
 
         @GetMapping(path = "/get")
-        private @ResponseBody TagModel getTag(@RequestParam final Long commentaryId) {
-            return commentaryService.get(commentaryId);
+        private @ResponseBody CommentaryModel getCommentary(@RequestParam final Long commentaryId) {
+            return commentaryService.getCommentary(commentaryId);
         }
 
         @PostMapping(path = "/update")
-        private @ResponseBody TagModel updateTag(@RequestBody final Long commentaryId, PostModel post) {
-            return commentaryService.update(commentaryId, post);
+        private @ResponseBody CommentaryModel updateCommentary(@RequestBody final Long commentaryId, PostModel post) {
+            return commentaryService.updateCommentary(commentaryId, post);
         }
 
         @PostMapping(path = "/delete")
-        private ResponseEntity<?> deleteUser(@RequestParam final Long commentaryId) {
-            commentaryService.delete(commentaryId);
+        private ResponseEntity<?> deleteCommentary(@RequestParam final Long commentaryId) {
+            commentaryService.deleteCommentary(commentaryId);
             return ResponseEntity.noContent().build();
         }
 

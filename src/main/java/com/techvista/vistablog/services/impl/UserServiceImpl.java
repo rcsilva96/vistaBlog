@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public UserModel save(final UserModel user) {
+    public UserModel saveUser(final UserModel user) {
         UserModel existingUser = userRepository.findByUsername(user.getUserName());
         if (Objects.nonNull(existingUser)) {
             throw new RuntimeException("O usuário já existe!");
@@ -28,7 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserModel> getAll() {
+    public List<UserModel> getAllUsers() {
+
         return userRepository.findAll();
     }
 
@@ -51,7 +52,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long userId) {
+    public void deleteUser(Long userId) {
+
         userRepository.deleteById(userId);
+
     }
 }

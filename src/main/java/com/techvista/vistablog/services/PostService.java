@@ -6,13 +6,14 @@ import com.techvista.vistablog.models.TagModel;
 import java.util.List;
 
 public interface PostService {
-    PostModel save(PostModel post);
 
-    List<PostModel> getAll();
+    PostModel savePost(PostModel post);
 
-    TagModel get(Long postId);
+    List<PostModel> getAllPosts();
 
-    TagModel update(Long postId, PostModel post);
+    PostModel getPost(Long postId);
 
-    void delete(Long postId);
+    PostModel updatePost(Long postId, PostModel post);
+
+    void deletePost(Long postId);
 }

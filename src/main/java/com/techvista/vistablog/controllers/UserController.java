@@ -17,27 +17,27 @@ public class UserController {
 
     @PostMapping("/save")
     private @ResponseBody UserModel saveUser(@RequestBody UserModel user) {
-        return userService.save(user);
+        return userService.saveUser(user);
     }
 
     @GetMapping("/getAll")
     private @ResponseBody List<UserModel> getAllUsers() {
-        return userService.getAll();
+        return userService.getAllUsers();
     }
 
     @GetMapping(path = "/get")
     private @ResponseBody UserModel getUser(@RequestParam final Long userId) {
-        return userService.get(userId);
+        return userService.getUser(userId);
     }
 
     @PostMapping(path = "/update")
-    private @ResponseBody UserModel updateUser(@RequestBody final Long userId, UserModel user) {
-        return userService.update(userId, user);
+    private @ResponseBody UserModel updateUser(@RequestBody final Long userId, @RequestBody UserModel user) {
+        return userService.updateUser(userId, user);
     }
 
     @PostMapping(path = "/delete")
     private ResponseEntity<?> deleteUser(@RequestParam final Long userId) {
-        userService.delete(userId);
+        userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
 

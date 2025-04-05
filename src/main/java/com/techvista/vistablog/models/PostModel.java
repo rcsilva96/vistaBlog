@@ -30,5 +30,11 @@ public class PostModel {
     private UserModel userID;
 
     public PostModel(Long postID, String postTitle, String postContent, UserModel userID) {
+
+        this.postID = postID;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.userID = userID;
+
     }
 }

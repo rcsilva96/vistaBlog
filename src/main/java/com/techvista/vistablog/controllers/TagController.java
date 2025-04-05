@@ -16,28 +16,35 @@ import java.util.List;
         private TagService tagService;
 
         @PostMapping("/save")
-        private @ResponseBody TagModel saveTag(@RequestBody TagModel tag) {
-            return tagService.save(tag);
+        private @ResponseBody TagModel saveTag(@RequestBody TagModel tag)
+        {
+
+            return tagService.saveTag(tag);
+
         }
 
         @GetMapping("/getAll")
         private @ResponseBody List<TagModel> getAllTags() {
-            return tagService.getAll();
+
+            return tagService.getAllTags();
+
         }
 
         @GetMapping(path = "/get")
         private @ResponseBody TagModel getTag(@RequestParam final Long tagId) {
-            return tagService.get(tagId);
+
+            return tagService.getTag(tagId);
+
         }
 
         @PostMapping(path = "/update")
         private @ResponseBody TagModel updateTag(@RequestBody final Long tagId, TagModel tag) {
-            return tagService.update(tagId, tag);
+            return tagService.updateTag(tagId, tag);
         }
 
         @PostMapping(path = "/delete")
-        private ResponseEntity<?> deleteUser(@RequestParam final Long tagId) {
-            tagService.delete(tagId);
+        private ResponseEntity<?> deleteTag(@RequestParam final Long tagId) {
+            tagService.deleteTag(tagId);
             return ResponseEntity.noContent().build();
         }
 
