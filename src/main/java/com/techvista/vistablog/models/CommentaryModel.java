@@ -19,6 +19,7 @@ public class CommentaryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long commentaryId;
+
     private String content;
 
     private Date date;

@@ -1,9 +1,12 @@
 package com.techvista.vistablog.services.impl;
 
+import ch.qos.logback.classic.encoder.JsonEncoder;
 import com.techvista.vistablog.models.UserModel;
 import com.techvista.vistablog.repositories.UserRepository;
 import com.techvista.vistablog.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,16 +16,28 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
+    //TODO: Verificar o erro em passwordEncoder
+
+    @Autowired
     private final UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    //        JsonEncoder passwordEncoder;
+    //        String passwordHash = passwordEncoder.encode(user.getPassword());
 
     @Override
     public UserModel saveUser(final UserModel user) {
-        UserModel existingUser = userRepository.findByUsername(user.getUserName());
+
+        UserModel existingUser = userRepository.findByName(user.getName());
         if (Objects.nonNull(existingUser)) {
             throw new RuntimeException("O usuário já existe!");
         }
+        String passwordHash = passwordEncoder.encode(user.getPassword());
 
-        UserModel entity = new UserModel(user.getUserID(), user.getUserName(), user.getPassword(), user.getEmail(), user.getRole());
+
+        UserModel entity = new UserModel(user.getUserID(), user.getName(), user.getPassword(), user.getEmail(), user.getRole(), user.getUsername());
         UserModel newUser = userRepository.save(entity);
         return newUser;
     }
@@ -40,15 +55,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserModel updateUser(Long userId, UserModel user) {
+
+
         UserModel existingUser = userRepository.findById(userId).orElse(null);
-        if (existingUser == null) {
-            throw new RuntimeException("Usuário não encontrado!");
+
+        if (Objects.nonNull(existingUser)) {
+
+            String passwordHash = passwordEncoder.encode(user.getPassword());
+            existingUser.setName(user.getName());
+            existingUser.setPassword(user.getPassword());
+            existingUser.setEmail(user.getEmail());
+            existingUser.setRole(user.getRole());
+            return userRepository.save(existingUser);
+
         }
-        existingUser.setUserName(user.getUserName());
-        existingUser.setPassword(user.getPassword());
-        existingUser.setEmail(user.getEmail());
-        existingUser.setRole(user.getRole());
-        return userRepository.save(existingUser);
+
+        return null;
+
     }
 
     @Override
