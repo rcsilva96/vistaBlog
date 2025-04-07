@@ -8,9 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Long> {
 
-    //TODO: verificar se o nome do método está correto
+    UserModel findByUsername(String username);
 
     UserModel findByName(String name);
-
-    UserDetails findByUsername(String login);
 }

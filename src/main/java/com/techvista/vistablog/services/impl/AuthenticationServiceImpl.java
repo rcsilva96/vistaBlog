@@ -20,8 +20,6 @@ import java.time.ZoneOffset;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-    //TODO: Verificar o que está errado nesse arquivo
-
     @Autowired
     private UserRepository userRepository;
 

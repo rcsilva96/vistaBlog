@@ -18,8 +18,6 @@ import java.io.IOException;
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
 
-    //TODO: Checar UserModel
-
     @Autowired
     private AuthenticationService authenticationService;
 

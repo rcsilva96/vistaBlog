@@ -16,8 +16,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    //TODO: Verificar o erro em passwordEncoder
-
     @Autowired
     private final UserRepository userRepository;
 
