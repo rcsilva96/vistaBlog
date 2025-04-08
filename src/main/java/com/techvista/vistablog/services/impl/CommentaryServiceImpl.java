@@ -16,7 +16,7 @@ public class CommentaryServiceImpl implements CommentaryService {
     private final CommentaryRepository commentaryRepository;
 
     @Override
-    public void saveCommentary(CommentaryModel commentary) {
+    public CommentaryModel saveCommentary(CommentaryModel commentary) {
 
         CommentaryModel existingCommentary = commentaryRepository.findById(commentary.getCommentaryId()).orElse(null);
         if (existingCommentary != null) {
@@ -25,6 +25,7 @@ public class CommentaryServiceImpl implements CommentaryService {
         CommentaryModel entity = new CommentaryModel(commentary.getCommentaryId(), commentary.getContent(), commentary.getDate(),commentary.getUser(), commentary.getPost());
         CommentaryModel newCommentary = commentaryRepository.save(entity);
         commentaryRepository.save(newCommentary);
+        return newCommentary;
     }
 
     @Override

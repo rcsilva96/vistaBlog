@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CommentaryService {
 
-    void saveCommentary(CommentaryModel commentary);
+    CommentaryModel saveCommentary(CommentaryModel commentary);
 
     CommentaryModel getCommentary(Long commentaryId);
 
