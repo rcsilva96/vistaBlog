@@ -25,12 +25,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException{
-        return userRepository.findByUsername(login);
+        return userRepository.findByUserName(login);
     }
 
     @Override
     public String getToken(AuthRequest auth){
-        UserModel user = userRepository.findByUsername(auth.getUsername());
+        UserModel user = userRepository.findByUserName(auth.getUserName());
         return generateToken(user);
     }
 
@@ -42,7 +42,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
             return JWT.create()
                     .withIssuer("vistaBlog")
-                    .withSubject("user.getUsername()")
+                    .withSubject("user.getUserName()")
                     .withExpiresAt(getExpirationDate())
                     .sign(algorithm);
 

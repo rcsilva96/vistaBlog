@@ -38,7 +38,8 @@
 	<properties>
 
 		<java.version>17</java.version>
-
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 	<dependencies>
@@ -63,6 +64,27 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
+		</dependency>
+
+		<!-- MySQL -->
+
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- FlyWay -->
+
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.flywaydb.enterprise</groupId>
+			<artifactId>flyway-mysql</artifactId>
+			<version>8.5.11</version>
 		</dependency>
 
 		<!-- Outras dependências -->

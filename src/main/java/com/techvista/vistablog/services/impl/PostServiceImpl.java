@@ -19,7 +19,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostModel savePost(final PostModel post) {
 
-        PostModel existingPost = postRepository.findByTitle(post.getPostTitle());
+        PostModel existingPost = postRepository.findByPostTitle(post.getPostTitle());
         if (Objects.nonNull(existingPost)){
             throw new RuntimeException("O post já existe!");
         }

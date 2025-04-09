@@ -25,7 +25,7 @@ public class UserModel implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userID;
 
-    private String Name;
+    private String name;
 
     private String email;
 

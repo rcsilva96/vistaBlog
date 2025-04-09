@@ -10,7 +10,7 @@ public class AuthRequest {
         this.password = password;
     }
 
-    public String getUsername() {
+    public String getUserName() {
         return username;
     }
 

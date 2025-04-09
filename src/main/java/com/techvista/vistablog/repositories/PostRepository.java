@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostRepository extends JpaRepository<PostModel, Long> {
-    PostModel findByTitle(String title);
+    PostModel findByPostTitle(String postTitle);
 
-    boolean existsByTitle(String title);
+    boolean existsByPostTitle(String postTitle);
 
-    void deleteByTitle(String title);
+    void deleteByPostTitle(String postTitle);
 }
